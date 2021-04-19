@@ -18,7 +18,7 @@ public class LoginWechatTest {
 
     @BeforeAll
     public static void initData(){
-        System.setProperty("webdriver.chrome.driver", "/Users/pan.li/TestEnv/driver/chromedriver");
+        //System.setProperty("webdriver.chrome.driver", "/Users/pan.li/TestEnv/driver/chromedriver");
         webDriver = new ChromeDriver();
     }
     @Test
@@ -28,11 +28,11 @@ public class LoginWechatTest {
             Thread.sleep(10000);
             Set<Cookie> cookies = webDriver.manage().getCookies();
             webDriver.navigate().refresh();
-            ObjectMapper objectMapper=new ObjectMapper(new YAMLFactory());
+            ObjectMapper objectMapper=new ObjectMapper(new YAMLFactory()); //获取cookie，并以yaml格式写入文件中。
             //todo: 使用getResource代替
+            //this.getClass().getResource(); 可以读到resource下的文件
             objectMapper.writeValue(new File("cookie.yaml"),cookies);
-            cookies.forEach(cookie-> System.out.println(cookie.getName()+":"+cookie.getValue()));
-
+            cookies.forEach(cookie-> System.out.println(cookie.getName()+":"+cookie.getValue())); //将cookiie打印到console
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,7 +47,7 @@ public class LoginWechatTest {
             List<HashMap<String, Object>> cookies = objectMapper.readValue(new File("cookie.yaml"), typeReference);
             cookies.forEach(cookie->{
                 webDriver.manage().addCookie(new Cookie(cookie.get("name").toString(),cookie.get("value").toString()));
-            });
+            }); //把取到的cookiie值 以name value形式分别写入新页面。
             webDriver.navigate().refresh();
             webDriver.findElement(By.id("menu_contacts")).click();
             webDriver.findElement(By.id("memberSearchInput")).sendKeys("霍格沃兹");

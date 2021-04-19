@@ -5,12 +5,10 @@ import org.openqa.selenium.WebDriver;
 import java.util.HashMap;
 
 public class ContactPage extends BasePage{
-    WebDriver driver;
-
-    public ContactPage (WebDriver webDriver) {
+    public ContactPage(WebDriver webDriver) {
         super(webDriver);
-       // driver = webDriver;
     }
+
     //HashMap<String,String> data 将多数据直接使用HashMap传进来
     public ContactPage add(String name, String account, String mobile, HashMap<String,String> data){
         driver.findElement(By.name("username")).sendKeys(name);
@@ -36,6 +34,15 @@ public class ContactPage extends BasePage{
         String name = driver.findElement(By.cssSelector(".")).getText();
         return name;
     }
-    public void addDepart(){}
+    public void addDepart(String name, String parent) {
+        click(By.linkText("添加"));
+        click(By.linkText("添加部门"));
+        sendKeys(By.name("name"), name);
+        click(By.linkText("选择所属部门"));
+//        click(By.linkText("霍格沃兹学院"));
+        //避免使用滚动
+        driver.findElement(By.tagName("form")).findElement(By.linkText(parent)).click();
+        click(By.linkText("确定"));
+    }
 
 }

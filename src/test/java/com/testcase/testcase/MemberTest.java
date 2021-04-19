@@ -34,12 +34,16 @@ public class MemberTest {
 
     @Test
     void addLink(){
+        //测试数据
         String accountId="seveniruby_"+System.currentTimeMillis();
         String username="seveniruby";
         String mobile=String.valueOf(System.currentTimeMillis()).substring(0, 11);
+
+        //测试步骤
         String res=new WeWork().startWeb().login().toMemberAdd().add(
                 username, accountId, mobile, null
         ).search(accountId).getMember();
+        //断言
         assertThat(res, equalTo(username));
     }
 
@@ -47,6 +51,6 @@ public class MemberTest {
     void departAdd(){
         //直接找到页面中所有定位符，变成一个字典，直接去查找元素
         String departName = "dx5"+ System.currentTimeMillis();
-        new WeWork().startWeb().login().toContactPage().addDepart(departName);
+        new WeWork().startWeb().login().toContactPage().addDepart(departName, "定向5期");
     }
 }

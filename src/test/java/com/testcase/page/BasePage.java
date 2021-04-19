@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BasePage {
     WebDriver driver;
+    Integer retryTimes = 3;
 
     public BasePage(WebDriver driver){
         this.driver = driver;
@@ -24,13 +25,20 @@ public class BasePage {
             driver.findElement(by).click();
         } catch (Exception e){
             e.printStackTrace();
-            //todo: 解决弹窗阻挡
-            this.handleAlert();
-            return click(by);
-            //todo: retry
+            retryTimes += 1;
+            if (retryTimes < 4) {
+                //todo: 解决弹框
+                this.handleAlert();
+                return click(by);
+            } else {
+                retryTimes = 0;
+                return false;
+
+            }
         }
         return true;
     }
+
     public void clickUntil(By by, By next){
         //todo: 用来解决前几次点击不生效，后面生效的过程
     }
