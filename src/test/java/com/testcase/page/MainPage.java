@@ -9,7 +9,7 @@ public class MainPage extends BasePage{
         return new ContactPage(driver); //add member后 页面会返回到通讯录页面，因此需要返回搭配对应页面去操作
     }
     public ContactPage toContactPage() {
-        click(By.linkText("通讯录"));
+        click(By.id("menu_contacts"));
         return new ContactPage(driver);
     }
 

@@ -3,16 +3,21 @@ package com.testcase.testcase;
 import com.testcase.page.ContactPage;
 import com.testcase.page.MainPage;
 import com.testcase.page.WeWork;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashMap;
 import java.util.List;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MemberTest {
+    @AfterEach
+    public void tearDown() {
+        tearDown();
+    }
     @Test
     void add(){
         String accountId="seveniruby_"+System.currentTimeMillis();
@@ -31,7 +36,6 @@ public class MemberTest {
         assertThat(s, equalTo("123"));
     }
 
-    @Test
     @ParameterizedTest
     @MethodSource("com.testcase.util.GetTestData#getUserInfoDataFromYaml")
     void addMember(List<HashMap<String, Object>> userInfo){
@@ -41,14 +45,15 @@ public class MemberTest {
             String mobile = user.get("mobile").toString();
             String res=new WeWork().startWeb().login().toMemberAdd().add(username, accountId, mobile, null
             ).search(accountId).getMember();
-            //断言
             assertThat(res, equalTo(username));
         });
     }
 
-    @Test
-    void uploadAvatar(){
-
+    @ParameterizedTest
+    @ValueSource(strings = "/Users/pan.li/Project/WebUITest/Selenium_Test_Frame/src/main/resources/pic01.png")
+    void uploadAvatar(String path) throws InterruptedException {
+        String message = new WeWork().startWeb().login().toContactPage().enterEditPage().uploadAvatar(path);
+        assertThat(message,equalTo("Saved successfully"));
     }
     @Test
     void deleteMember(){

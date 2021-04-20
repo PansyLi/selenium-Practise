@@ -14,7 +14,9 @@ public class BasePage {
     public BasePage(WebDriver driver){
         this.driver = driver;
     }
-
+    public void tearDown() {
+        driver.quit();
+    }
     public boolean click(By by){
         //todo: 突然弹窗阻挡 异常流程 流程调整
         //todo: find找不到 弹窗阻挡 加载延迟
