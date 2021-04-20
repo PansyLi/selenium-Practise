@@ -8,7 +8,7 @@ public class DepartTest {
     @Test
     void departAdd(){
         String departName="dx5_" + System.currentTimeMillis();
-        new WeWork().startWeb().login().toContactPage().addDepart(departName, "定向5期");
+        new WeWork().startWeb().login().toContactPage().addDepart(departName, "panpan");
     }
     //todo: delete department
     //todo: modify department

@@ -15,29 +15,26 @@ import java.util.concurrent.TimeUnit;
 public class WeWork{
     WebDriver driver;
     //1, mainPgae 直接传递 2, driver变成全局变量
-
     public WeWork startWeb() {
         //todo: 支持多浏览器
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return this;
     }
-    public MainPage login () {
+    public MainPage login() {
         try {
             driver.get("https://work.weixin.qq.com/wework_admin/frame");
-
             ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
             TypeReference<List<HashMap<String, Object>>> typeReference = new TypeReference<List<HashMap<String, Object>>>() {
             };
             List<HashMap<String, Object>> cookies = objectMapper.readValue(new File("cookie.yaml"), typeReference);
             cookies.forEach(cookie -> {
                 driver.manage().addCookie(new Cookie(cookie.get("name").toString(), cookie.get("value").toString()));
+                System.out.println(cookie.get("name").toString() +":"+ cookie.get("value").toString());
             });
-
+            Thread.sleep(2000);
             driver.navigate().refresh();
             return new MainPage(driver);
-
-//           Thread.sleep(10000);
         } catch (Exception e) {
             e.printStackTrace();
         }

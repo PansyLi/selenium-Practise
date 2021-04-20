@@ -6,9 +6,8 @@ import com.testcase.page.WeWork;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.ArrayList;
-import java.util.stream.Stream;
+import java.util.HashMap;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -33,20 +32,22 @@ public class MemberTest {
     }
 
     @Test
-
-    void addLink(ArrayList list){
-        //测试数据
-        String accountId="seveniruby_"+System.currentTimeMillis();
-        String username="seveniruby";
-        String mobile=String.valueOf(System.currentTimeMillis()).substring(0, 11);
-        //测试步骤
-        String res=new WeWork().startWeb().login().toMemberAdd().add(username, accountId, mobile, null
-        ).search(accountId).getMember();
-        //断言
-        assertThat(res, equalTo(username));
+    @ParameterizedTest
+    @MethodSource("com.testcase.util.GetTestData#getUserInfoDataFromYaml")
+    void addMember(List<HashMap<String, Object>> userInfo){
+        userInfo.forEach(user -> {
+            String username = user.get("username").toString();
+            String accountId = user.get("accountId").toString();
+            String mobile = user.get("mobile").toString();
+            String res=new WeWork().startWeb().login().toMemberAdd().add(username, accountId, mobile, null
+            ).search(accountId).getMember();
+            //断言
+            assertThat(res, equalTo(username));
+        });
     }
+
     @Test
-    void updateMember(){
+    void uploadAvatar(){
 
     }
     @Test

@@ -9,9 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
+
 
 public class LoginWechatTest {
     public static WebDriver webDriver;
@@ -21,6 +24,7 @@ public class LoginWechatTest {
         //System.setProperty("webdriver.chrome.driver", "/Users/pan.li/TestEnv/driver/chromedriver");
         webDriver = new ChromeDriver();
     }
+
     @Test
     public void saveCookie() {
         try {
@@ -41,7 +45,7 @@ public class LoginWechatTest {
     @Test
     public void loginTest() {
         try {
-            webDriver.get("https://work.weixin.qq.com/wework_admin/frame");
+           // webDriver.get("https://work.weixin.qq.com/wework_admin/frame");
             ObjectMapper objectMapper=new ObjectMapper(new YAMLFactory());
             TypeReference<List<HashMap<String, Object>>> typeReference=new TypeReference<List<HashMap<String, Object>>>(){};
             List<HashMap<String, Object>> cookies = objectMapper.readValue(new File("cookie.yaml"), typeReference);

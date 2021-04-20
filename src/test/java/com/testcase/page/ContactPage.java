@@ -11,10 +11,10 @@ public class ContactPage extends BasePage{
 
     //HashMap<String,String> data 将多数据直接使用HashMap传进来
     public ContactPage add(String name, String account, String mobile, HashMap<String,String> data){
-        driver.findElement(By.name("username")).sendKeys(name);
-        driver.findElement(By.name("acctid")).sendKeys(account);
-        driver.findElement(By.name("phone")).sendKeys(mobile);
-        driver.findElement(By.linkText("save")).click();
+        driver.findElement(By.id("username")).sendKeys(name);
+        driver.findElement(By.id("memberAdd_acctid")).sendKeys(account);
+        driver.findElement(By.id("memberAdd_phone")).sendKeys(mobile);
+        driver.findElement(By.linkText("Save")).click();
         return this;
     }
     public void addFail(){}
@@ -22,7 +22,7 @@ public class ContactPage extends BasePage{
     public void delete(){}
 
     public ContactPage search(String accountId){
-        driver.findElement(By.id("")).sendKeys(accountId);
+        driver.findElement(By.id("memberSearchInput")).sendKeys(accountId);
         return this;
     }
 
@@ -31,7 +31,7 @@ public class ContactPage extends BasePage{
     public void exportMember(){}
 
     public String getMember(){
-        String name = driver.findElement(By.cssSelector(".")).getText();
+        String name = driver.findElement(By.cssSelector(".member_display_cover_detail_name")).getText();
         return name;
     }
     public void addDepart(String name, String parent) {
