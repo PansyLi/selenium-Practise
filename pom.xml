@@ -55,23 +55,10 @@
             <artifactId>jackson-dataformat-yaml</artifactId>
             <version>2.9.9</version>
         </dependency>
-
-
-        <!--testng-->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.10</version>
-        </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
             <version>5.2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.13.6</version>
         </dependency>
         <!--selenium-->
         <dependency>
