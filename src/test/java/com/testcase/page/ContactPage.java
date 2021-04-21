@@ -64,5 +64,16 @@ public class ContactPage extends BasePage{
         String message = driver.findElement(By.cssSelector(".ww_tip success")).getText();
         return message;
     }
-
+    public String deleteDepart(){
+        click(By.cssSelector(".jstree-children:last-child"));
+//        String departName = driver.findElement(By.cssSelector(".jstree-children:last-child")).getText();
+        click(By.cssSelector(".jstree-contextmenu-hover"));
+        click(By.linkText("Delete"));
+//        JavascriptExecutor jsDriver = (JavascriptExecutor)driver;
+//        jsDriver.executeScript("document.querySelector('.jstree-children:last-child').click");
+//        jsDriver.executeScript("document.querySelector('.jstree-clicked').click");
+        click(By.cssSelector("[d_ck='submit']"));
+        String message = driver.findElement(By.cssSelector(".ww_tip success")).getText();
+        return message;
+    }
 }

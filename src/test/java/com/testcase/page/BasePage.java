@@ -2,22 +2,23 @@ package com.testcase.page;
 
 import org.junit.jupiter.api.AfterAll;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class BasePage {
-    WebDriver driver;
+    static WebDriver driver;
     Integer retryTimes = 3;
 
     public BasePage(WebDriver driver){
         this.driver = driver;
     }
-    @AfterAll
-    public void tearDown() {
+    public static void tearDown() {
         driver.quit();
     }
+
     public boolean click(By by){
         //todo: 突然弹窗阻挡 异常流程 流程调整
         //todo: find找不到 弹窗阻挡 加载延迟

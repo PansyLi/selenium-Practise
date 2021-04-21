@@ -1,5 +1,6 @@
 package com.testcase.testcase;
 
+import com.testcase.page.BasePage;
 import com.testcase.page.ContactPage;
 import com.testcase.page.MainPage;
 import com.testcase.page.WeWork;
@@ -15,8 +16,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MemberTest {
     @AfterAll
-    public void tearDown() {
-        tearDown();
+    public static void tearDown() {
+        BasePage.tearDown();
     }
     @Test
     void add(){
