@@ -3,7 +3,7 @@ package com.testcase.testcase;
 import com.testcase.page.ContactPage;
 import com.testcase.page.MainPage;
 import com.testcase.page.WeWork;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,7 +14,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MemberTest {
-    @AfterEach
+    @AfterAll
     public void tearDown() {
         tearDown();
     }
@@ -36,6 +36,7 @@ public class MemberTest {
         assertThat(s, equalTo("123"));
     }
 
+    //add member to default department
     @ParameterizedTest
     @MethodSource("com.testcase.util.GetTestData#getUserInfoDataFromYaml")
     void addMember(List<HashMap<String, Object>> userInfo){
@@ -49,6 +50,7 @@ public class MemberTest {
         });
     }
 
+    //upload user avator
     @ParameterizedTest
     @ValueSource(strings = "/Users/pan.li/Project/WebUITest/Selenium_Test_Frame/src/main/resources/pic01.png")
     void uploadAvatar(String path) throws InterruptedException {

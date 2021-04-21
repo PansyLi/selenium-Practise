@@ -32,7 +32,7 @@ public class WeWork{
             List<HashMap<String, Object>> cookies = objectMapper.readValue(new File("cookie.yaml"), typeReference);
             cookies.forEach(cookie -> {
                 driver.manage().addCookie(new Cookie(cookie.get("name").toString(), cookie.get("value").toString()));
-                System.out.println(cookie.get("name").toString() +":"+ cookie.get("value").toString());
+              //  System.out.println(cookie.get("name").toString() +":"+ cookie.get("value").toString());
             });
             Thread.sleep(2000);
             driver.navigate().refresh();

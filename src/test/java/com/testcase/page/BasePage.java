@@ -1,11 +1,11 @@
 package com.testcase.page;
 
+import org.junit.jupiter.api.AfterAll;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class BasePage {
     WebDriver driver;
@@ -14,6 +14,7 @@ public class BasePage {
     public BasePage(WebDriver driver){
         this.driver = driver;
     }
+    @AfterAll
     public void tearDown() {
         driver.quit();
     }

@@ -52,15 +52,17 @@ public class ContactPage extends BasePage{
         String message = driver.findElement(By.id("js_tips")).getText();
         return message;
     }
-    public void addDepart(String name, String parent) {
+    public String addDepart(String name, String parent) {
         click(By.linkText("Add"));
         click(By.cssSelector(".js_create_party"));
         sendKeys(By.name("name"), name);
         click(By.cssSelector(".js_parent_party_name"));
-        click(By.linkText("panpan"));
+        click(By.cssSelector(".jstree-themeicon-custom"));
         //避免使用滚动
         driver.findElement(By.tagName("form")).findElement(By.linkText(parent)).click();
         click(By.linkText("Confirm"));
+        String message = driver.findElement(By.cssSelector(".ww_tip success")).getText();
+        return message;
     }
 
 }

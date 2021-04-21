@@ -16,4 +16,7 @@ public class GetTestData {
         List<HashMap<String, Object>> userInfo = objectMapper.readValue(new File("src/main/resources/data/userInfo.yaml"), typeReference);
         return Stream.of(userInfo) ;
     }
+    public static Stream<String> getDepartmentName(){
+        return Stream.of("dx5_" + System.currentTimeMillis()) ;
+    }
 }
