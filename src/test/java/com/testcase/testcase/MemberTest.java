@@ -15,10 +15,10 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MemberTest {
-    @AfterAll
+/*    @AfterAll
     public static void tearDown() {
         BasePage.tearDown();
-    }
+    }*/
     @Test
     void add(){
         String accountId="seveniruby_"+System.currentTimeMillis();
@@ -62,6 +62,4 @@ public class MemberTest {
     void deleteMember(){
 
     }
-
-
 }

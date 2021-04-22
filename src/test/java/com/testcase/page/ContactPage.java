@@ -17,7 +17,7 @@ public class ContactPage extends BasePage{
         driver.findElement(By.id("username")).sendKeys(name);
         driver.findElement(By.id("memberAdd_acctid")).sendKeys(account);
         driver.findElement(By.id("memberAdd_phone")).sendKeys(mobile);
-        driver.findElement(By.linkText("Save")).click();
+        driver.findElement(By.cssSelector(".js_save:nth-child(0)")).click();
         return this;
     }
     public void addFail(){}
@@ -39,7 +39,7 @@ public class ContactPage extends BasePage{
     }
     public ContactPage enterEditPage(){
         driver.findElement(By.cssSelector("[data-type='member']:first-child")).click();
-        driver.findElement(By.linkText("Edit")).click();
+        driver.findElement(By.cssSelector(".js_edit")).click();
         return this;
 
     }
@@ -48,19 +48,19 @@ public class ContactPage extends BasePage{
         driver.findElement(By.name("uploadImageFile")).sendKeys(path);
         Thread.sleep(2000);
         driver.findElement(By.xpath("//*[@id='__dialog__avatarEditor__']/div/div[3]/a[1]")).click();
-        driver.findElement(By.linkText("Save")).sendKeys(Keys.ENTER);
+        driver.findElement(By.cssSelector(".js_save:nth-child(2)")).click();
         String message = driver.findElement(By.id("js_tips")).getText();
         return message;
     }
     public String addDepart(String name, String parent) {
-        click(By.linkText("Add"));
+        click(By.cssSelector(".js_create_dropdown"));
         click(By.cssSelector(".js_create_party"));
         sendKeys(By.name("name"), name);
         click(By.cssSelector(".js_parent_party_name"));
         click(By.cssSelector(".jstree-themeicon-custom"));
         //避免使用滚动
         driver.findElement(By.tagName("form")).findElement(By.linkText(parent)).click();
-        click(By.linkText("Confirm"));
+        click(By.cssSelector("[d_ck='submit']"));
         String message = driver.findElement(By.cssSelector(".ww_tip success")).getText();
         return message;
     }

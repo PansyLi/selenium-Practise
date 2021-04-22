@@ -19,6 +19,7 @@ public class WeWork{
     //1, mainPgae 直接传递 2, driver变成全局变量
     public WeWork startWeb() {
         //todo: 支持多浏览器
+        System.setProperty("webdriver.chrome.driver", "/Users/pan.li/TestEnv/driver/chromedriver");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return this;

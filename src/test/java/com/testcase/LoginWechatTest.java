@@ -21,7 +21,7 @@ public class LoginWechatTest {
 
     @BeforeAll
     public static void initData(){
-        //System.setProperty("webdriver.chrome.driver", "/Users/pan.li/TestEnv/driver/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/pan.li/TestEnv/driver/chromedriver");
         webDriver = new ChromeDriver();
     }
 
