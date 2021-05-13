@@ -1,4 +1,4 @@
-package com.testcase;
+package web;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

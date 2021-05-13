@@ -1,8 +1,6 @@
-package com.testcase.page;
+package web.page;
 
-import org.junit.jupiter.api.AfterAll;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
@@ -46,20 +44,25 @@ public class BasePage {
     public void clickUntil(By by, By next){
         //todo: 用来解决前几次点击不生效，后面生效的过程
     }
-
     public void sendKeys(By by, String content){
         driver.findElement(by).sendKeys(content);
     }
     public void handleAlert(){
     //    driver.getPageSource()
         List black = Arrays.asList("","");
-
-
     //  List black = Arrays.asList(By.id(""),By.name(""));
     //    driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS)
     //    driver.findElement()  隐士等待比较浪费时间
-
-
     }
     //也可以使用java注解方式
+
+    public boolean isJudgingElement(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (Exception e) {
+            System.out.println("不存在此元素");
+            return false;
+        }
+    }
 }

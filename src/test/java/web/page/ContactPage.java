@@ -1,7 +1,5 @@
-package com.testcase.page;
+package web.page;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.*;
 
 import java.util.HashMap;

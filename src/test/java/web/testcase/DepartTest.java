@@ -1,7 +1,7 @@
-package com.testcase.testcase;
+package web.testcase;
 
-import com.testcase.page.BasePage;
-import com.testcase.page.WeWork;
+import web.page.BasePage;
+import web.page.WeWork;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

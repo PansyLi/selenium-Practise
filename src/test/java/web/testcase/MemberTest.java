@@ -1,10 +1,8 @@
-package com.testcase.testcase;
+package web.testcase.testcase;
 
-import com.testcase.page.BasePage;
-import com.testcase.page.ContactPage;
-import com.testcase.page.MainPage;
-import com.testcase.page.WeWork;
-import org.junit.jupiter.api.AfterAll;
+import web.testcase.page.ContactPage;
+import web.testcase.page.MainPage;
+import web.testcase.page.WeWork;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
